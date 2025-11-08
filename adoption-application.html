@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adoption Application • Chica & Buddy's Desert Rescue</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7f5f2;
+      margin: 0;
+      color: #222;
+    }
+    .wrapper {
+      max-width: 900px;
+      margin: 24px auto 34px;
+      padding: 18px 18px 24px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+      font-weight: 800;
+      color: #e57b3f;
+    }
+    p { font-size: 0.9rem; color: #555; margin: 2px 0 10px; }
+    a { color: #3f7fe5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+    }
+    form {
+      display: grid;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    label { font-weight: 600; font-size: 0.8rem; }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 9px;
+      border: 1px solid #ddd;
+      font-family: inherit;
+      font-size: 0.83rem;
+      outline: none;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #e57b3f;
+      box-shadow: 0 0 0 2px rgba(229,123,63,0.14);
+    }
+    textarea { resize: vertical; min-height: 70px; }
+    .group-title {
+      margin-top: 8px;
+      font-weight: 700;
+      color: #333;
+      font-size: 0.9rem;
+    }
+    .inline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 8px;
+    }
+    .btn {
+      margin-top: 10px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #e57b3f;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <a class="back-link" href="index.html">← Back to Chica & Buddy's Desert Rescue</a>
+    <h1>Adoption Application</h1>
+    <p>
+      Thank you for choosing to adopt. Please answer honestly so we can match you and your new family member safely.
+    </p>
+
+    <form action="mailto:chicabuddysdesertrescue@gmail.com" method="POST" enctype="text/plain">
+      <div class="group-title">Contact Information</div>
+      <div class="inline">
+        <div>
+          <label>Full Name*</label>
+          <input type="text" name="Full Name" required />
+        </div>
+        <div>
+          <label>Email*</label>
+          <input type="email" name="Email" required />
+        </div>
+      </div>
+      <div class="inline">
+        <div>
+          <label>Phone*</label>
+          <input type="text" name="Phone" required />
+        </div>
+        <div>
+          <label>City & State*</label>
+          <input type="text" name="City/State" placeholder="Phoenix, AZ" required />
+        </div>
+      </div>
+      <label>
+        Full Physical Address*
+        <input type="text" name="Address" required />
+      </label>
+
+      <div class="group-title">About the Animal</div>
+      <label>
+        Name of dog/cat you're interested in (or "any")*
+        <input type="text" name="Animal Interested In" required />
+      </label>
+      <label>
+        Why are you interested in this animal / our rescue?*
+        <textarea name="Why This Animal/Rescue" required></textarea>
+      </label>
+
+      <div class="group-title">Home & Lifestyle</div>
+      <div class="inline">
+        <div>
+          <label>Housing Type*</label>
+          <select name="Housing Type" required>
+            <option value="">Select</option>
+            <option>House</option>
+            <option>Apartment</option>
+            <option>Condo/Townhome</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Rent or Own?*</label>
+          <select name="Rent/Own" required>
+            <option value="">Select</option>
+            <option>Own</option>
+            <option>Rent (I have landlord approval)</option>
+          </select>
+        </div>
+      </div>
+      <label>
+        If renting, landlord name & contact (or pet policy link)
+        <textarea name="Landlord Info"></textarea>
+      </label>
+      <label>
+        Who lives in your home? (Adults/children & ages)*
+        <textarea name="Household" required></textarea>
+      </label>
+      <label>
+        Current pets (species, age, spayed/neutered, temperament)*
+        <textarea name="Current Pets" required></textarea>
+      </label>
+      <label>
+        Typical daily schedule & how long the pet will be alone*
+        <textarea name="Schedule" required></textarea>
+      </label>
+      <label>
+        Where will the pet sleep?*
+        <input type="text" name="Sleeping Arrangements" required />
+      </label>
+      <label>
+        How will you handle training, decompression, or behavior issues?*
+        <textarea name="Training/Decompression Plan" required></textarea>
+      </label>
+
+      <div class="group-title">Vet & Commitment</div>
+      <label>
+        Current / previous vet clinic (name & phone)*
+        <textarea name="Vet Info" required></textarea>
+      </label>
+      <label>
+        Are you able to provide routine and emergency vet care if needed?*
+        <select name="Vet Commitment" required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>No</option>
+          <option>Unsure, would like to discuss</option>
+        </select>
+      </label>
+      <label>
+        If something changes and you can no longer keep the pet, do you agree to contact
+        Chica & Buddy's Desert Rescue so we can help?*
+        <select name="Return Agreement" required>
+          <option value="">Select</option>
+          <option>Yes, I agree</option>
+          <option>No</option>
+        </select>
+      </label>
+      <label>
+        Anything else we should know?
+        <textarea name="Additional Info"></textarea>
+      </label>
+
+      <button type="submit" class="btn">Email My Adoption Application</button>
+      <div class="disclaimer">
+        This form uses your email app to send your answers directly to
+        chicabuddysdesertrescue@gmail.com.
+        For a more automated setup later, you can connect this page to a service like Formspree or Netlify Forms.
+      </div>
+    </form>
+  </div>
+</body>
+</html>
