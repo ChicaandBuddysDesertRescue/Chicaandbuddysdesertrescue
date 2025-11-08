@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foster Application • Chica & Buddy's Desert Rescue</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f7f5f2;
+      margin: 0;
+      color: #222;
+    }
+    .wrapper {
+      max-width: 900px;
+      margin: 24px auto 34px;
+      padding: 18px 18px 24px;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+      font-weight: 800;
+      color: #e57b3f;
+    }
+    p { font-size: 0.9rem; color: #555; margin: 2px 0 10px; }
+    a { color: #3f7fe5; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 0.8rem;
+    }
+    form {
+      display: grid;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+    label { font-weight: 600; font-size: 0.8rem; }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 9px;
+      border-radius: 9px;
+      border: 1px solid #ddd;
+      font-family: inherit;
+      font-size: 0.83rem;
+      outline: none;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: #e57b3f;
+      box-shadow: 0 0 0 2px rgba(229,123,63,0.14);
+    }
+    textarea { resize: vertical; min-height: 70px; }
+    .group-title {
+      margin-top: 8px;
+      font-weight: 700;
+      color: #333;
+      font-size: 0.9rem;
+    }
+    .inline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+      gap: 8px;
+    }
+    .checkboxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
+      gap: 4px 12px;
+      font-size: 0.8rem;
+    }
+    .btn {
+      margin-top: 10px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      background: #e57b3f;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .disclaimer {
+      font-size: 0.7rem;
+      color: #999;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <a class="back-link" href="index.html">← Back to Chica & Buddy's Desert Rescue</a>
+    <h1>Foster Application</h1>
+    <p>
+      Fostering saves lives. Tell us about your home so we can match the right animal to you.
+    </p>
+
+    <form action="mailto:chicabuddysdesertrescue@gmail.com" method="POST" enctype="text/plain">
+      <div class="group-title">Contact Information</div>
+      <div class="inline">
+        <div>
+          <label>Full Name*</label>
+          <input type="text" name="Full Name" required />
+        </div>
+        <div>
+          <label>Email*</label>
+          <input type="email" name="Email" required />
+        </div>
+      </div>
+      <div class="inline">
+        <div>
+          <label>Phone*</label>
+          <input type="text" name="Phone" required />
+        </div>
+        <div>
+          <label>City & State*</label>
+          <input type="text" name="City/State" placeholder="Phoenix, AZ" required />
+        </div>
+      </div>
+      <label>
+        Full Physical Address*
+        <input type="text" name="Address" required />
+      </label>
+
+      <div class="group-title">Home & Experience</div>
+      <div class="inline">
+        <div>
+          <label>Housing Type*</label>
+          <select name="Housing Type" required>
+            <option value="">Select</option>
+            <option>House</option>
+            <option>Apartment</option>
+            <option>Condo/Townhome</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label>Rent or Own?*</label>
+          <select name="Rent/Own" required>
+            <option value="">Select</option>
+            <option>Own</option>
+            <option>Rent (I have landlord approval)</option>
+          </select>
+        </div>
+      </div>
+      <label>
+        If renting, landlord name & contact (or pet policy link)
+        <textarea name="Landlord Info"></textarea>
+      </label>
+      <label>
+        Who lives in your home? (Adults/children & ages)*
+        <textarea name="Household" required></textarea>
+      </label>
+      <label>
+        Current pets (species, age, spayed/neutered, temperament)*
+        <textarea name="Current Pets" required></textarea>
+      </label>
+      <label>
+        Fencing / yard info (height, secure, none, etc.)*
+        <textarea name="Yard/Fencing" required></textarea>
+      </label>
+      <label>
+        Typical daily schedule & how long a foster will be alone*
+        <textarea name="Schedule" required></textarea>
+      </label>
+
+      <div class="group-title">Foster Preferences</div>
+      <p style="font-size:0.8rem; margin:0;">
+        What are you open to fostering?*
+      </p>
+      <div class="checkboxes">
+        <label><input type="checkbox" name="Small Dogs" /> Small dogs</label>
+        <label><input type="checkbox" name="Med/Large Dogs" /> Medium/Large dogs</label>
+        <label><input type="checkbox" name="Puppies" /> Puppies</label>
+        <label><input type="checkbox" name="Adult Cats" /> Adult cats</label>
+        <label><input type="checkbox" name="Kittens" /> Kittens</label>
+        <label><input type="checkbox" name="Medical/Special Needs" /> Medical/special needs</label>
+        <label><input type="checkbox" name="Shy/Trauma" /> Shy/trauma/behavior cases</label>
+      </div>
+      <label>
+        Any age/breed/size restrictions or triggers we should know about?*
+        <textarea name="Restrictions" required></textarea>
+      </label>
+      <label>
+        How long are you typically able to foster?*
+        <select name="Foster Length" required>
+          <option value="">Select</option>
+          <option>Emergency / 1-7 days</option>
+          <option>Short term / 1-4 weeks</option>
+          <option>Until adopted, no set time</option>
+        </select>
+      </label>
+      <label>
+        Are you able to bring fosters to vet appointments or meet-ups if scheduled in advance?*
+        <select name="Transport Ability" required>
+          <option value="">Select</option>
+          <option>Yes</option>
+          <option>Sometimes</option>
+          <option>No, need transport help</option>
+        </select>
+      </label>
+
+      <div class="group-title">Vet & Commitment</div>
+      <label>
+        Current / previous vet clinic (name & phone)*
+        <textarea name="Vet Info" required></textarea>
+      </label>
+      <label>
+        Do you understand that Chica & Buddy's covers approved vetting
+        and fosters must use our approved vets unless otherwise arranged?*
+        <select name="Policy Understanding" required>
+          <option value="">Select</option>
+          <option>Yes, I understand</option>
+          <option>No</option>
+        </select>
+      </label>
+      <label>
+        Anything else we should know about your experience or what you’re comfortable with?
+        <textarea name="Additional Info"></textarea>
+      </label>
+
+      <button type="submit" class="btn">Email My Foster Application</button>
+      <div class="disclaimer">
+        This form uses your email app to send your answers directly to
+        chicabuddysdesertrescue@gmail.com.
+        You can switch to a proper form backend later if you’d like automated submissions.
+      </div>
+    </form>
+  </div>
+</body>
+</html>
