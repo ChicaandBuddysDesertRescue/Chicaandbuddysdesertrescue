@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chica and Buddy's Desert Rescue</title>
+  <meta name="description" content="Chica and Buddy's Desert Rescue is a foster-based dog and cat rescue in Arizona dedicated to saving, rehabilitating, and rehoming at-risk animals.">
+  <style>
+    :root {
+      --bg: #f7f5f2;
+      --primary: #e57b3f;
+      --primary-soft: #ffe3cf;
+      --dark: #232323;
+      --accent: #3f7fe5;
+      --radius-xl: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 10px 25px rgba(0,0,0,0.06);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(14px);
+      background-color: rgba(247,245,242,0.96);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: var(--radius-full);
+      transition: all 0.2s ease;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--primary-soft);
+      text-decoration: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.23s ease;
+      box-shadow: var(--shadow-soft);
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    }
+
+    .btn-ghost {
+      background-color: #fff;
+      color: var(--dark);
+    }
+
+    .btn-ghost:hover { background-color: var(--primary-soft); }
+
+    /* Urgent strip */
+    .urgent-strip {
+      background: #ffe3cf;
+      color: #5b3218;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 14px 7px;
+      font-size: 0.8rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .urgent-strip a {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 22px 40px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 2.2fr);
+      gap: 26px;
+      align-items: center;
+      padding: 26px 22px 24px;
+      margin: 14px 0 28px;
+      background: #fff;
+      border-radius: 26px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span { color: var(--primary); }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 0.78rem;
+    }
+
+    .hero-tag {
+      padding: 6px 12px;
+      background-color: var(--primary-soft);
+      border-radius: var(--radius-full);
+      color: #333;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .hero-note {
+      font-size: 0.78rem;
+      color: #777;
+    }
+
+    .hero-right {
+      position: relative;
+      padding: 14px;
+      background: linear-gradient(145deg, #fff7f1, #fff);
+      border-radius: 22px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .hero-card {
+      padding: 10px 10px 9px;
