@@ -1,856 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chica and Buddy's Desert Rescue</title>
-  <meta name="description" content="Chica and Buddy's Desert Rescue is a foster-based dog and cat rescue in Arizona dedicated to saving, rehabilitating, and rehoming at-risk animals.">
-  <style>
-    :root {
-      --bg: #f7f5f2;
-      --primary: #e57b3f;
-      --primary-soft: #ffe3cf;
-      --dark: #232323;
-      --accent: #3f7fe5;
-      --radius-xl: 18px;
-      --radius-full: 999px;
-      --shadow-soft: 0 10px 25px rgba(0,0,0,0.06);
-      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: var(--font-main);
-      background-color: var(--bg);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      backdrop-filter: blur(14px);
-      background-color: rgba(247,245,242,0.96);
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 14px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .logo-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: var(--radius-full);
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      font-size: 0.9rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      padding: 6px 10px;
-      border-radius: var(--radius-full);
-      transition: all 0.2s ease;
-      font-weight: 500;
-      color: #333;
-    }
-
-    .nav-links a:hover {
-      background-color: var(--primary-soft);
-      text-decoration: none;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px 20px;
-      border-radius: var(--radius-full);
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.23s ease;
-      box-shadow: var(--shadow-soft);
-      gap: 6px;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background-color: var(--primary);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-    }
-
-    .btn-ghost {
-      background-color: #fff;
-      color: var(--dark);
-    }
-
-    .btn-ghost:hover { background-color: var(--primary-soft); }
-
-    /* Urgent strip */
-    .urgent-strip {
-      background: #ffe3cf;
-      color: #5b3218;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 14px 7px;
-      font-size: 0.8rem;
-      border-bottom: 1px solid rgba(0,0,0,0.04);
-    }
-
-    .urgent-strip a {
-      padding: 4px 10px;
-      border-radius: var(--radius-full);
-      background: #fff;
-      box-shadow: var(--shadow-soft);
-      font-weight: 600;
-      color: var(--primary);
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 24px 22px 40px;
-    }
-
-    /* Hero */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(260px, 2.2fr);
-      gap: 26px;
-      align-items: center;
-      padding: 26px 22px 24px;
-      margin: 14px 0 28px;
-      background: #fff;
-      border-radius: 26px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .hero-title {
-      font-size: clamp(2rem, 3vw, 2.4rem);
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .hero-title span { color: var(--primary); }
-
-    .hero-sub {
-      font-size: 0.98rem;
-      color: #555;
-      margin-bottom: 16px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-      font-size: 0.78rem;
-    }
-
-    .hero-tag {
-      padding: 6px 12px;
-      background-color: var(--primary-soft);
-      border-radius: var(--radius-full);
-      color: #333;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-
-    .hero-note {
-      font-size: 0.78rem;
-      color: #777;
-    }
-
-    .hero-right {
-      position: relative;
-      padding: 14px;
-      background: linear-gradient(145deg, #fff7f1, #fff);
-      border-radius: 22px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .hero-card {
-      padding: 10px 10px 9px;
-      border-radius: 14px;
-      background-color: #fff;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .hero-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: #999;
-      letter-spacing: 0.06em;
-    }
-
-    .hero-value {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #333;
-    }
-
-    .hero-status {
-      font-size: 0.72rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .hero-paw {
-      position: absolute;
-      right: 10px;
-      bottom: 6px;
-      font-size: 1.6rem;
-      opacity: 0.18;
-    }
-
-    section { margin-bottom: 34px; }
-
-    section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    section h2 span {
-      font-size: 1.2rem;
-      color: var(--primary);
-    }
-
-    section p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
-      gap: 18px;
-      margin-top: 10px;
-    }
-
-    .card {
-      background-color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 14px 14px 12px;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.9rem;
-    }
-
-    .card h3 {
-      font-size: 1rem;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-      font-size: 0.78rem;
-    }
-
-    .pill {
-      padding: 5px 10px;
-      border-radius: var(--radius-full);
-      background-color: var(--primary-soft);
-      color: #444;
-    }
-
-    .urgent-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .urgent-card {
-      background: #fff;
-      border-radius: var(--radius-xl);
-      padding: 10px 10px 9px;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.84rem;
-      border-left: 4px solid #e57b3f;
-    }
-
-    .urgent-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .urgent-meta {
-      font-size: 0.76rem;
-      color: #777;
-    }
-
-    .urgent-copy {
-      font-size: 0.8rem;
-      margin-top: 2px;
-    }
-
-    .urgent-cta {
-      margin-top: 4px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--primary);
-    }
-
-    .pet-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .pet-card {
-      background-color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 10px 10px 9px;
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      font-size: 0.85rem;
-    }
-
-    .pet-name { font-weight: 700; font-size: 0.95rem; }
-    .pet-meta { font-size: 0.78rem; color: #777; }
-
-    .pet-badge {
-      display: inline-flex;
-      padding: 3px 8px;
-      font-size: 0.7rem;
-      border-radius: var(--radius-full);
-      background-color: var(--primary-soft);
-      margin-top: 2px;
-      color: #444;
-    }
-
-    .help-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 14px;
-      margin-top: 10px;
-    }
-
-    .help-card {
-      background-color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 10px 10px 9px;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.85rem;
-    }
-
-    .help-card h3 {
-      font-size: 0.95rem;
-      margin-bottom: 3px;
-    }
-
-    .help-card ul {
-      padding-left: 16px;
-      margin-top: 4px;
-    }
-
-    .help-card li {
-      margin-bottom: 3px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.8fr);
-      gap: 18px;
-      margin-top: 10px;
-    }
-
-    .contact-item {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .contact-label {
-      font-weight: 600;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      color: #999;
-      letter-spacing: 0.08em;
-    }
-
-    form {
-      display: grid;
-      gap: 6px;
-      font-size: 0.85rem;
-    }
-
-    input, textarea, select {
-      width: 100%;
-      padding: 8px 9px;
-      border-radius: 9px;
-      border: 1px solid #ddd;
-      font-family: inherit;
-      font-size: 0.85rem;
-      outline: none;
-      transition: all 0.17s ease;
-      background-color: #fff;
-    }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 2px rgba(229,123,63,0.12);
-    }
-
-    textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .disclaimer {
-      font-size: 0.72rem;
-      color: #999;
-      margin-top: 3px;
-    }
-
-    footer {
-      border-top: 1px solid rgba(0,0,0,0.06);
-      padding: 12px 22px 20px;
-      font-size: 0.75rem;
-      color: #888;
-      max-width: 1100px;
-      margin: 0 auto 10px;
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .socials {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .socials a {
-      padding: 4px 8px;
-      border-radius: var(--radius-full);
-      background-color: #fff;
-      box-shadow: var(--shadow-soft);
-      font-size: 0.76rem;
-      color: #555;
-    }
-
-    @media (max-width: 780px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 20px 16px 18px;
-      }
-      .nav { padding-inline: 14px; }
-      main { padding-inline: 14px; }
-      .nav-links { display: none; }
-    }
-
-    @media (max-width: 640px) {
-      .two-col, .contact-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chica & Buddy's Desert Rescue</title>
+<meta name="description" content="Chica & Buddy's Desert Rescue is a foster-based Arizona dog and cat rescue saving and rehoming at-risk animals.">
+<style>
+:root {
+  --bg:#f7f5f2; --primary:#e57b3f; --primary-soft:#ffe3cf;
+  --dark:#232323; --shadow:0 10px 25px rgba(0,0,0,0.06);
+  --radius:18px; --radius-full:999px;
+  --font:system-ui,-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--dark);margin:0;line-height:1.6;}
+header{background:#fff;border-bottom:1px solid rgba(0,0,0,0.05);box-shadow:var(--shadow);}
+.nav{max-width:1100px;margin:auto;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+.logo-container{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--dark);}
+.logo-img{height:60px;width:auto;border-radius:12px;}
+.contact-bar{background:var(--primary-soft);padding:6px 14px;text-align:center;font-size:0.9rem;color:#333;}
+.contact-bar a{color:var(--dark);font-weight:600;text-decoration:none;}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap;}
+.nav-links a{text-decoration:none;color:#333;font-weight:600;}
+.btn{background:var(--primary);color:#fff;padding:7px 14px;border-radius:var(--radius-full);text-decoration:none;}
+.btn:hover{background:#d36f33;}
+main{max-width:1100px;margin:auto;padding:20px;}
+section{background:#fff;border-radius:var(--radius);padding:20px;margin-bottom:30px;box-shadow:var(--shadow);}
+h2 span{color:var(--primary);}
+.urgent-grid,.pet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.urgent-card,.pet-card{background:#fff;border-radius:14px;padding:12px;box-shadow:var(--shadow);}
+.pet-photo{width:100%;border-radius:10px;margin:6px 0;object-fit:cover;max-height:260px;}
+footer{text-align:center;font-size:0.8rem;color:#777;margin:20px;}
+</style>
 </head>
 <body>
-  <header>
-    <div class="urgent-strip">
-      <span>🚨 Urgent: Dogs & cats facing shelter deadlines & unsafe conditions.</span>
-      <a href="#urgent">View & Help Now</a>
-    </div>
-    <nav class="nav">
-      <div class="logo">
-        <div class="logo-icon">🐾</div>
-        <div>Chica &amp; Buddy's Desert Rescue</div>
-      </div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#urgent">Urgent</a>
-        <a href="#adopt">Adopt</a>
-        <a href="#foster">Foster</a>
-        <a href="#donate">Donate</a>
-        <a href="#contact">Contact</a>
-        <a href="adoption-application.html" class="btn btn-primary">Adoption App</a>
-        <a href="foster-application.html" class="btn btn-ghost">Foster App</a>
-      </div>
-    </nav>
-  </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1 class="hero-title">
-          Chica &amp; Buddy's Desert Rescue
-          <br /><span>Saving Arizona dogs &amp; cats, one desert heart at a time.</span>
-        </h1>
-        <p class="hero-sub">
-          Inspired by Chica and Buddy, our foster-based, volunteer-run rescue steps in for
-          dogs and cats with nowhere else to go — the abandoned, the medical, the last-listed.
-        </p>
-        <div class="hero-tags">
-          <div class="hero-tag">📍 Arizona Based</div>
-          <div class="hero-tag">🐶 Dogs &amp; 🐱 Cats</div>
-          <div class="hero-tag">🏡 Foster Network</div>
-          <div class="hero-tag">❤️ 100% Donation Supported</div>
-        </div>
-        <div class="hero-actions">
-          <a href="#urgent" class="btn btn-primary">See Urgent Animals</a>
-          <a href="adoption-application.html" class="btn btn-ghost">Adoption Application</a>
-          <a href="foster-application.html" class="btn btn-ghost">Foster Application</a>
-        </div>
-        <div class="hero-note">
-          Your yes can be the reason an animal never knows a cold shelter floor.
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-grid">
-          <div class="hero-card">
-            <div class="hero-label">This Month</div>
-            <div class="hero-value">Lives Saved</div>
-            <div class="hero-status">Update with your real numbers</div>
-          </div>
-          <div class="hero-card">
-            <div class="hero-label">Critical</div>
-            <div class="hero-value">Fosters Needed</div>
-            <div class="hero-status">Large breeds • Moms &amp; babies • Kittens</div>
-          </div>
-          <div class="hero-card">
-            <div class="hero-label">In Honor Of</div>
-            <div class="hero-value">Chica &amp; Buddy</div>
-            <div class="hero-status">The hearts behind our mission</div>
-          </div>
-          <div class="hero-card">
-            <div class="hero-label">How To Help</div>
-            <div class="hero-value">Adopt • Foster • Share</div>
-            <div class="hero-status">Every share matters</div>
-          </div>
-        </div>
-        <div class="hero-paw">🐕🐈</div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about">
-      <h2><span>♡</span> Who We Are</h2>
-      <p>
-        Chica &amp; Buddy's Desert Rescue is a small, heart-led Arizona rescue.
-        We keep dogs and cats out of overcrowded kennels and unsafe situations by placing them
-        directly into loving foster homes and carefully screened adoptive homes.
-      </p>
-      <div class="two-col">
-        <div class="card">
-          <h3>Our Mission</h3>
-          <p>
-            To honor Chica and Buddy by saying "yes" to the lives most at risk:
-            medical cases, abandoned pets, seniors, and those left behind — and to give them safety and love.
-          </p>
-          <div class="pill-list">
-            <div class="pill">Shelter pulls</div>
-            <div class="pill">Medical &amp; special needs</div>
-            <div class="pill">Owner support &amp; rehoming</div>
-            <div class="pill">Spay/neuter advocacy</div>
-          </div>
-        </div>
-        <div class="card">
-          <h3>What Makes Us Different</h3>
-          <p>
-            100% foster-based. Transparent. Committed for life with a no-judgment return promise.
-            We focus on the animals that are running out of time.
-          </p>
-          <div class="pill-list">
-            <div class="pill">Home-based evaluations</div>
-            <div class="pill">Behavior &amp; decompression support</div>
-            <div class="pill">Lifetime safety net</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- URGENT -->
-    <section id="urgent">
-      <h2><span>🚨</span> Urgent Animals</h2>
-      <p>
-        These are the dogs and cats closest to losing everything. Fostering or adopting from this list
-        directly pulls them from danger.
-      </p>
-      <div class="urgent-grid">
-        <div class="urgent-card">
-          <div class="urgent-name">Red • 2 yr Lab/Ridgeback mix</div>
-          <div class="urgent-meta">Good with dogs &amp; kids • Neutered • Fully vetted</div>
-          <div class="urgent-copy">
-            Losing his safe place through no fault of his own. Sensitive, loyal, and running out of options.
-          </div>
-          <div class="urgent-cta">
-            Email chicabuddysdesertrescue@gmail.com to foster or adopt.
-          </div>
-        </div>
-        <div class="urgent-card">
-          <div class="urgent-name">Snow • 3 yr Husky</div>
-          <div class="urgent-meta">Spayed • Dog &amp; kid friendly</div>
-          <div class="urgent-copy">
-            Her people are gone. She needs a soft couch, not a concrete run.
-          </div>
-          <div class="urgent-cta">
-            Email chicabuddysdesertrescue@gmail.com to help.
-          </div>
-        </div>
-        <div class="urgent-card">
-          <div class="urgent-name">Lola • 2 yr Staffy/Hound mix</div>
-          <div class="urgent-meta">30 lbs • Spayed • Potty &amp; crate trained</div>
-          <div class="urgent-copy">
-            Her person passed away; she’s next on the list without a foster.
-          </div>
-          <div class="urgent-cta">
-            One email can save her: chicabuddysdesertrescue@gmail.com
-          </div>
-        </div>
-      </div>
-      <p class="disclaimer">
-        Update this section anytime with your current urgent animals, photos, and details.
-      </p>
-    </section>
-
-    <!-- ADOPT -->
-    <section id="adopt">
-      <h2><span>🐾</span> Adopt</h2>
-      <p>
-        Adoption is a promise. In return, you get a best friend who made it out because you opened your door.
-      </p>
-
-      <div class="pet-grid">
-        <div class="pet-card">
-          <div class="pet-name">Mascots: Chica &amp; Buddy</div>
-          <div class="pet-meta">The hearts behind this rescue</div>
-          <div class="pet-badge">Every save is in their honor.</div>
-        </div>
-        <div class="pet-card">
-          <div class="pet-name">Your Adoptables Here</div>
-          <div class="pet-meta">Link to Petfinder / posts / forms</div>
-          <div class="pet-badge">Edit this section anytime.</div>
-        </div>
-      </div>
-
-      <p style="font-size:0.82rem; color:#777; margin-top:6px;">
-        Ready to adopt? Complete our
-        <a href="adoption-application.html">Adoption Application</a>
-        and we’ll follow up from
-        <a href="mailto:chicabuddysdesertrescue@gmail.com">chicabuddysdesertrescue@gmail.com</a>.
-      </p>
-    </section>
-
-    <!-- FOSTER -->
-    <section id="foster">
-      <h2><span>🏡</span> Foster</h2>
-      <p>
-        Fostering opens a kennel door for the next dog or cat in line. We’ve got you; you’ve got them.
-      </p>
-      <div class="help-grid">
-        <div class="help-card">
-          <h3>What We Provide</h3>
-          <ul>
-            <li>Approved vetting &amp; medical</li>
-            <li>Supplies when available</li>
-            <li>Support every step of the way</li>
-          </ul>
-        </div>
-        <div class="help-card">
-          <h3>What You Provide</h3>
-          <ul>
-            <li>Safe indoor space</li>
-            <li>Love, patience, consistency</li>
-            <li>Photos &amp; updates so we can network them</li>
-          </ul>
-        </div>
-        <div class="help-card">
-          <h3>High-Need Fosters</h3>
-          <ul>
-            <li>Large &amp; bully breeds</li>
-            <li>Moms &amp; babies / bottle kittens</li>
-            <li>Shy or shutdown dogs who need time</li>
-          </ul>
-        </div>
-      </div>
-      <p style="font-size:0.82rem; color:#777; margin-top:6px;">
-        Start by filling out our
-        <a href="foster-application.html">Foster Application</a>.
-      </p>
-    </section>
-
-    <!-- DONATE (no direct handle links) -->
-    <section id="donate">
-      <h2><span>❤️</span> Donate &amp; Support</h2>
-      <p>
-        As a small foster-based rescue, we rely on community support for medical care, food, and supplies.
-        To donate or sponsor an animal, please email
-        <a href="mailto:chicabuddysdesertrescue@gmail.com">chicabuddysdesertrescue@gmail.com</a>
-        for current options.
-      </p>
-      <div class="help-grid">
-        <div class="help-card">
-          <h3>Supply Donations</h3>
-          <ul>
-            <li>Food, crates, litter, puppy pads</li>
-            <li>Leashes, collars, harnesses</li>
-            <li>Blankets, toys, enrichment</li>
-          </ul>
-        </div>
-        <div class="help-card">
-          <h3>Wishlist Links</h3>
-          <p style="font-size:0.83rem; color:#555;">
-            Add your Amazon/Chewy wishlist links here once created.
-          </p>
-        </div>
-        <div class="help-card">
-          <h3>Share &amp; Support</h3>
-          <ul>
-            <li>Share our urgent posts</li>
-            <li>Help with transport or home checks</li>
-            <li>Host small fundraisers or donation drives</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-      <h2><span>📩</span> Contact &amp; General Inquiry</h2>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-item">
-            <div class="contact-label">Email</div>
-            <div>
-              <a href="mailto:chicabuddysdesertrescue@gmail.com">
-                chicabuddysdesertrescue@gmail.com
-              </a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">Emergency / Urgent</div>
-            <div>
-              For animals in immediate danger, put "URGENT" in the subject line.
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">Service Area</div>
-            <div>Phoenix &amp; surrounding Arizona cities.</div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-label">Social</div>
-            <div>
-              Instagram &amp; Facebook: Chica &amp; Buddy's Desert Rescue (add your exact @ once created)
-            </div>
-          </div>
-          <p class="disclaimer">
-            Foster-based only; meet &amp; greets are scheduled for approved applicants.
-          </p>
-        </div>
-        <div>
-          <form action="mailto:chicabuddysdesertrescue@gmail.com" method="POST" enctype="text/plain">
-            <label>
-              Name*
-              <input type="text" name="Name" required />
-            </label>
-            <label>
-              Email*
-              <input type="email" name="Email" required />
-            </label>
-            <label>
-              Subject*
-              <input type="text" name="Subject" required />
-            </label>
-            <label>
-              Message*
-              <textarea name="Message" required></textarea>
-            </label>
-            <button type="submit" class="btn btn-primary">Send Email</button>
-            <div class="disclaimer">
-              This form opens your email app to send directly to chicabuddysdesertrescue@gmail.com.
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div>© <span id="year"></span> Chica and Buddy's Desert Rescue • All rights reserved.</div>
-    <div class="socials">
+<header>
+  <div class="nav">
+    <a href="#top" class="logo-container">
+      <img src="images/logo.png" alt="Chica and Buddy's Desert Rescue logo" class="logo-img">
+      <strong>Chica & Buddy's Desert Rescue</strong>
+    </a>
+    <div class="nav-links">
       <a href="#urgent">Urgent</a>
-      <a href="#adopt">Adopt</a>
+      <a href="#available">Available</a>
       <a href="#foster">Foster</a>
-      <a href="#donate">Donate</a>
-      <a href="adoption-application.html">Adoption App</a>
-      <a href="foster-application.html">Foster App</a>
+      <a href="#donate">Support</a>
+      <a href="#contact">Contact</a>
+      <a href="adoption-application.html" class="btn">Adopt</a>
+      <a href="foster-application.html" class="btn">Foster</a>
+      <a href="https://cash.app/$chicabuddysrescue" target="_blank" class="btn">Donate</a>
     </div>
-  </footer>
+  </div>
+  <div class="contact-bar">
+    📧 <a href="mailto:chicabuddysdesertrescue@gmail.com">chicabuddysdesertrescue@gmail.com</a>  •  📞 480-934-7186
+  </div>
+</header>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+<main id="top">
+  <section id="about">
+    <h2><span>♡</span> About Us</h2>
+    <p>Chica &amp; Buddy's Desert Rescue is a small, heart-led foster rescue based in Arizona.
+       We say “yes” to dogs and cats with nowhere else to go — the abandoned, the medical, the seniors — 
+       giving them safety, love, and forever homes.</p>
+  </section>
+
+  <section id="urgent">
+    <h2><span>🚨</span> Urgent Dogs</h2>
+    <div class="urgent-grid">
+      <div class="urgent-card">
+        <strong>Red • 2 yr Lab/Ridgeback mix</strong>
+        <p>Good with dogs &amp; kids • Neutered • Fully vetted</p>
+        <p>Sweet, loyal boy with a heart of gold. Needs a foster or adopter ASAP.</p>
+        <p><b>Email:</b> chicabuddysdesertrescue@gmail.com</p>
+      </div>
+      <div class="urgent-card">
+        <strong>Lola • 2 yr Staffy/Hound mix</strong>
+        <p>~30 lbs • Spayed • Potty &amp; crate trained</p>
+        <p>Her person passed away. Without help she risks ending up in a shelter.
+           Gentle, affectionate, and great with other dogs and kids.</p>
+        <p><b>Email:</b> chicabuddysdesertrescue@gmail.com</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="available">
+    <h2><span>🐾</span> Adoptable &amp; Foster-Needed Dogs</h2>
+    <p>These dogs are ready for loving homes. Contact <b>chicabuddysdesertrescue@gmail.com</b>.</p>
+    <div class="pet-grid">
+      <div class="pet-card">
+        <strong>Red</strong>
+        <p>2 yr • Lab/Ridgeback mix • Neutered • Dog &amp; kid friendly</p>
+        <img src="images/red.jpg" alt="Red, a red-coated mixed breed dog" class="pet-photo">
+        <p>Gentle, smart, and eager to bond. Ideal for a loving, active home that can give him reassurance and routine.</p>
+      </div>
+      <div class="pet-card">
+        <strong>Lola</strong>
+        <p>2 yr • Staffy/Hound mix • Spayed • Potty &amp; crate trained</p>
+        <img src="images/lola.jpg" alt="Lola, a smiling black and white Staffy mix" class="pet-photo">
+        <p>Sweet, affectionate, and full of love — Lola lost her owner but hasn’t lost hope. She adores people and car rides.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="foster">
+    <h2><span>🏡</span> Foster</h2>
+    <p>Fosters save lives. We provide vetting, supplies (when available), and full support — you provide love and a temporary safe place.</p>
+    <p>Ready to help? Fill out our <a href="foster-application.html">Foster Application</a>.</p>
+  </section>
+
+  <section id="donate">
+    <h2><span>❤️</span> Support the Rescue</h2>
+    <p>
+      We rely on community support for medical care, food, and supplies.
+      You can help by donating directly through Cash App or by emailing
+      <b>chicabuddysdesertrescue@gmail.com</b> to sponsor a dog or ask how to help.
+    </p>
+
+    <div style="text-align:center; margin-top:14px;">
+      <p><strong>💚 Cash App: <a href="https://cash.app/$chicabuddysrescue" target="_blank">$chicabuddysrescue</a></strong></p>
+      <img src="images/cashapp.png" alt="Cash App QR code for Chica and Buddy's Desert Rescue ($chicabuddysrescue)" style="max-width:250px; width:80%; border-radius:16px; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-top:10px;">
+      <p style="font-size:0.85rem; color:#555; margin-top:6px;">Scan the QR code or tap the link above to donate via Cash App.</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><span>📩</span> Contact</h2>
+    <p>📧 <a href="mailto:chicabuddysdesertrescue@gmail.com">chicabuddysdesertrescue@gmail.com</a></p>
+    <p>📞 480-934-7186</p>
+    <p>Serving Phoenix and surrounding Arizona areas.</p>
+  </section>
+</main>
+
+<footer>
+  © <script>document.write(new Date().getFullYear());</script> Chica &amp; Buddy's Desert Rescue • All rights reserved.
+</footer>
 </body>
-  </html>
+</html>
